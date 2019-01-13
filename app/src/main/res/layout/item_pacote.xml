@@ -26,11 +26,14 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sao_paulo_sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@sample/pacotes.json/pacotes/imagem"/>
 
+            <!--  Depois de criado o sampledata, pode ser que seja necessário reiniciar o
+              Android Studio para que atualize os dados do sampledata (fazer o build do projeto
+              não funcionou)  -->
             <!--  tools:src="@sample/pacote.json/imagem"  -->
             <!--
                 o valor 'centerCrop'  no atributo [ scaleType ] centraliza a imagem e corta o conteúdo
@@ -44,7 +47,7 @@
                 android:layout_margin="8dp"
                 android:background="@android:drawable/screen_background_dark_transparent"
                 android:padding="8dp"
-                android:text="São Paulo"
+                tools:text="@sample/pacotes.json/pacotes/local"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -69,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="2 dias"
+                tools:text="@sample/pacotes.json/pacotes/dias"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +84,7 @@
                 android:id="@+id/item_pacote_preco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="R$ 243,99"
+                tools:text="@sample/pacotes.json/pacotes/preco"
                 android:textColor="@android:color/holo_green_dark"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp"
