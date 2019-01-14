@@ -3,11 +3,16 @@ package com.example.ruan.aluraviagens.ui.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.ruan.aluraviagens.R;
 import com.example.ruan.aluraviagens.dao.PacoteDAO;
+import com.example.ruan.aluraviagens.model.Pacote;
 import com.example.ruan.aluraviagens.ui.adapter.ListaPacotesAdapter;
+
+import static com.example.ruan.aluraviagens.ui.PacoteActivityConstantes.CHAVE_PACOTE;
 
 public class ListaPacotesActivity extends AppCompatActivity {
 
@@ -21,14 +26,24 @@ public class ListaPacotesActivity extends AppCompatActivity {
         setTitle(TITULO_APPBAR);
 
         configuraLista();
-
-        Intent intent = new Intent(this, ResumoPacoteActivity.class);
-        startActivity(intent);
     }
 
     private void configuraLista() {
         ListView listaPacotesListView = (ListView) findViewById(R.id.lista_pacotes_listview);
         PacoteDAO pacoteDAO = new PacoteDAO();
         listaPacotesListView.setAdapter(new ListaPacotesAdapter(pacoteDAO.lista(), this));
+        listaPacotesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                vaiParaResumoPacote(parent, position);
+            }
+        });
+    }
+
+    private void vaiParaResumoPacote(AdapterView<?> parent, int position) {
+        Pacote pacoteClicado = (Pacote) parent.getItemAtPosition(position);
+        Intent intent = new Intent(ListaPacotesActivity.this, ResumoPacoteActivity.class);
+        intent.putExtra(CHAVE_PACOTE, pacoteClicado);
+        startActivity(intent);
     }
 }
